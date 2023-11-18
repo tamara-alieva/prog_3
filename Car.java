@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Car {
     private String brand;
     private boolean rate;
-    private Fuel fuel;
+    protected Fuel fuel;
 
     public Car() {
         this.fuel = new Fuel();
