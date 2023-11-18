@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Main {
     public static void order(boolean rate, boolean congestion, Passenger passenger, Driver driver, Car car) {
         System.out.println("ЗАКАЗ");
@@ -46,5 +48,97 @@ public class Main {
             car.output();
         }
         System.out.println();
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String buffer;
+        int i;
+        System.out.println("ТЕСТЫ:");
+        System.out.println("---------------------- Человек -----------------------------\n");
+        Person[] person_array = new Person[2];
+        buffer = "Иван";
+        person_array[0] = new Person(buffer);
+        System.out.println("--- Тест setName (установлено значение \"Иван\") и getName: имя - " + person_array[0].getName());
+        person_array[0].setBalance(500);
+        System.out.println("--- Тест setBalance (установлено значение 500) и getBbalance: баланс = " + person_array[0].getBalance());
+        System.out.println("--- Тест input (ввести данные):");
+        person_array[1] = new Person();
+        person_array[1].input();
+        System.out.println("--- Тест output (вывести данные):");
+        person_array[1].output();
+        System.out.println("\n---------------------- Пассажир ----------------------------\n");
+        Passenger passenger_dynamic = new Passenger(buffer, 200, true);
+        Passenger passenger_static = new Passenger(buffer);
+        System.out.println("--- Тест getMethod (установлено значение 1 - Банковская карта): способ оплаты - " + passenger_dynamic.getMethod());
+        System.out.println("--- Тест input (ввести данные):");
+        passenger_static.input();
+        System.out.println("--- Тест output (вывести данные):");
+        passenger_static.output();
+        System.out.println("---------------------- Водитель ----------------------------\n");
+        Driver driver = new Driver(person_array[1].getName());
+        driver.setBalance(4000);
+        driver.setExperience(5);
+        System.out.println("--- Тест setExperience (установлено значение 5) и getExperience: опыт вождения (лет) = " + driver.getExperience());
+        driver.setOrderAmount(15);
+        System.out.println("--- Тест setOrderAmount (установлено значение 15) и geOrderAmount: кол-во выполненных заказов = " + driver.getOrderAmount());
+        System.out.println("--- Тест input (ввести данные):");
+        driver.input();
+        System.out.println("--- Тест output (вывести данные):");
+        driver.output();
+        System.out.println("---------------------- Топливный бак -----------------------\n");
+        Fuel fuel = new Fuel();
+        fuel.setCapacity(true);
+        System.out.println("--- Тест setCapacity (установлено значение 1 - Полный) и getCapacity: заполненность = " + fuel.getCapacity());
+        System.out.println("--- Тест input_fuel (ввести данные):");
+        fuel.input();
+        System.out.println("--- Тест output_fuel (вывести данные):");
+        fuel.output();
+        fuel.empty();
+        System.out.println("--- Тест empty (опустошить бак): заполненность = " + fuel.getCapacity());
+        fuel.fill();
+        System.out.println("--- Тест fill (заполнить бак): заполненность = " + fuel.getCapacity() + "\n");
+        System.out.println("---------------------- Автомобиль --------------------------\n");
+        buffer = "Toyota";
+        Car[] car_array = new Car[3];
+        car_array[0] = new Car();
+        car_array[1] = new Car(buffer);
+        car_array[2] = new Car(true);
+        System.out.println("--- Тест setBrand (установлено значение \"Toyota\") и getBrand: " + car_array[1].getBrand());
+        car_array[1].setRate(false);
+        car_array[2].setRate(true);
+        System.out.println("--- Тест setRate (установлено значение 0 - Эконом) и getRate: класс автомобиля - " + car_array[1].getRate());
+        System.out.println("--- Тест input (ввести данные):");
+        car_array[0].input();
+        System.out.println("--- Тест output_car (вывести данные об автомобиле):");
+        car_array[0].output();
+        car_array[1].fuel.fill();
+        System.out.println("--- Тест fill (заполнить бак, через дочерний объект Fuel): заполненность = " + car_array[1].fuel.getCapacity() + "\n");
+        System.out.println("---------------------- Заказ -------------------------------");
+        boolean rate = false;
+        boolean congestion = false;
+        System.out.println("--- Тест 1 (Эконом): заказ успешно выполняется");
+        order(rate, congestion, passenger_dynamic, driver, car_array[1]);
+        System.out.println("--- Тест 2 (Эконом): на балансе пассажира недостаточно средств");
+        passenger_dynamic.setBalance(100);
+        order(rate, congestion, passenger_dynamic, driver, car_array[1]);
+        System.out.println("--- Тест 3 (Эконом): топливный бак автомобиля не заполнен");
+        passenger_dynamic.setBalance(300);
+        order(rate, congestion, passenger_dynamic, driver, car_array[1]);
+        System.out.println("--- Тест 4 (Комфорт): у водителя недостаточно лет опыта вождения");
+        rate = true;
+        congestion = true;
+        car_array[1].fuel.fill();
+        passenger_dynamic.setBalance(1500);
+        order(rate, congestion, passenger_dynamic, driver, car_array[1]);
+        System.out.println("--- Тест 5 (Комфорт): у водителя недостаточно выполненных заказов");
+        driver.setExperience(17);
+        order(rate, congestion, passenger_dynamic, driver, car_array[1]);
+        System.out.println("--- Тест 6 (Комфорт): автомобиль недостаточно высокого класса");
+        driver.setOrderAmount(50);
+        order(rate, congestion, passenger_dynamic, driver, car_array[1]);
+        System.out.println("--- Тест 7 (Комфорт): заказ успешно выполняется");
+        car_array[0].fuel.fill();
+        order(rate, congestion, passenger_dynamic, driver, car_array[0]);
     }
 }
