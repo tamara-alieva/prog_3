@@ -54,6 +54,7 @@ public class Person {
         } while (temp.isEmpty() || !Checking.intCheck(temp));
         this.balance = Integer.parseInt(temp);
         System.out.println("Данные успешно введены!\n");
+        scanner.close();
     }
 
     public void output() {
