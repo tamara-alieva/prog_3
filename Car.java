@@ -47,19 +47,25 @@ public class Car {
 
     public void input() {
         Scanner scanner = new Scanner(System.in);
-        String temp;
+        String temp; boolean flag;
         System.out.println("** Ввод данных автомобиля **");
         do {
             System.out.print("Введите марку: ");
-            this.brand = scanner.next();
-        } while (this.brand.isEmpty() || !Checking.nameCheck(this.brand));
+            this.brand = scanner.nextLine();
+            flag = Checking.nameCheck(this.brand);
+            if (!flag) System.out.print("Попробуйте ещё раз. ");
+        } while (!flag);
         do {
             System.out.print("Введите класс автомобиля (0 - Эконом, 1 - Комфорт): ");
-            temp = scanner.next();
-        } while (!temp.equals("0") && !temp.equals("1"));
-        this.rate = Boolean.parseBoolean(temp);
+            temp = scanner.nextLine();
+            flag = Checking.booleanCheck(temp);
+            if (!flag) System.out.print("Попробуйте ещё раз. ");
+        } while (!flag);
+        if (temp.equals("1"))
+            this.rate = true;
+        else
+            this.rate = false;
         System.out.println("Данные успешно введены!\n");
-        scanner.close();
     }
 
     public void output() {
