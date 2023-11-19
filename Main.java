@@ -75,7 +75,7 @@ public class Main {
         passenger.output();
         System.out.println("---------------------- Водитель ----------------------------\n");
         Driver driver = new Driver(person_array[1].getName());
-        driver.setBalance(4000);
+        driver.setBalance(3000);
         driver.setExperience(5);
         System.out.println("--- Тест setExperience (установлено значение 5) и getExperience: опыт вождения (лет) = " + driver.getExperience());
         driver.setOrderAmount(15);
@@ -138,6 +138,5 @@ public class Main {
         System.out.println("--- Тест 7 (Комфорт): заказ успешно выполняется");
         car_array[0].fuel.fill();
         order(rate, congestion, passenger, driver, car_array[0]);
-        //scanner.close();
     }
 }
