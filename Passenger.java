@@ -47,11 +47,7 @@ public class Passenger extends Person {
             this.payment_method = true;
         else
             this.payment_method = false;
-
-        //System.out.println("\"" + temp + "\"" + this.payment_method);
-        
         System.out.println("Данные успешно введены!\n");
-        //scanner.close();
     }
 
     @Override
