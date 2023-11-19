@@ -101,10 +101,10 @@ public class Main {
         Car[] car_array = new Car[3];
         car_array[0] = new Car();
         car_array[1] = new Car(buffer);
-        car_array[2] = new Car(true);
+        car_array[2] = new Car("Volvo", true);
+        car_array[2].fuel.fill();
         System.out.println("--- Тест setBrand (установлено значение \"Toyota\") и getBrand: " + car_array[1].getBrand());
         car_array[1].setRate(false);
-        car_array[2].setRate(true);
         System.out.println("--- Тест setRate (установлено значение 0 - Эконом) и getRate: класс автомобиля - " + car_array[1].getRate());
         System.out.println("--- Тест input (ввести данные):");
         car_array[0].input();
@@ -137,6 +137,6 @@ public class Main {
         order(rate, congestion, passenger, driver, car_array[1]);
         System.out.println("--- Тест 7 (Комфорт): заказ успешно выполняется");
         car_array[0].fuel.fill();
-        order(rate, congestion, passenger, driver, car_array[0]);
+        order(rate, congestion, passenger, driver, car_array[2]);
     }
 }
