@@ -42,16 +42,21 @@ public class Person {
 
     public void input() {
         Scanner scanner = new Scanner(System.in);
-        String temp;
+        String temp; boolean flag;
         System.out.println("** Ввод данных человека **");
         do {
             System.out.print("Введите имя: ");
-            this.name = scanner.next();
-        } while (this.name.isEmpty() || !Checking.nameCheck(this.name));
+            this.name = scanner.nextLine();
+            flag = Checking.nameCheck(this.name);
+            if (!flag) System.out.print("Попробуйте ещё раз. ");
+        } while (!flag);
+        
         do {
             System.out.print("Введите баланс: ");
-            temp = scanner.next();
-        } while (temp.isEmpty() || !Checking.intCheck(temp));
+            temp = scanner.nextLine();
+            flag = Checking.intCheck(temp);
+            if (!flag) System.out.print("Попробуйте ещё раз. ");
+        } while (!flag);
         this.balance = Integer.parseInt(temp);
         System.out.println("Данные успешно введены!\n");
         scanner.close();

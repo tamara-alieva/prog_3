@@ -53,7 +53,6 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String buffer;
-        int i;
         System.out.println("ТЕСТЫ:");
         System.out.println("---------------------- Человек -----------------------------\n");
         Person[] person_array = new Person[2];
@@ -140,5 +139,6 @@ public class Main {
         System.out.println("--- Тест 7 (Комфорт): заказ успешно выполняется");
         car_array[0].fuel.fill();
         order(rate, congestion, passenger_dynamic, driver, car_array[0]);
+        scanner.close();
     }
 }
