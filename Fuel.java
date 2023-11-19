@@ -21,15 +21,18 @@ public class Fuel {
 
     public void input() {
         Scanner scanner = new Scanner(System.in);
-        String temp;
+        String temp; boolean flag;
         System.out.println("** Ввод данных о топливном баке **");
         do {
             System.out.print("Введите заполенность бака (0 - Пустой, 1 - Полный): ");
-            temp = scanner.next();
-        } while (!temp.equals("0") && !temp.equals("1"));
-        this.capacity = Boolean.parseBoolean(temp);
-        System.out.println("Данные успешно введены!\n");
-        scanner.close();
+            temp = scanner.nextLine();
+            flag = Checking.booleanCheck(temp);
+            if (!flag) System.out.print("Попробуйте ещё раз. ");
+        } while (!flag);
+        if (temp.equals("1"))
+            this.capacity = true;
+        else
+            this.capacity = false;
     }
 
     public void output() {
