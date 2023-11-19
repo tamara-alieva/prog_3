@@ -60,7 +60,7 @@ public class Driver extends Person {
         } while (temp.isEmpty() || !Checking.intCheck(temp));
         this.orderAmount = Integer.parseInt(temp);
         System.out.println("Данные успешно введены!\n");
-        scanner.close();
+        //scanner.close();
     }
 
     @Override

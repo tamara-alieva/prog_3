@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Passenger extends Person {
@@ -33,17 +34,24 @@ public class Passenger extends Person {
 
     @Override
     public void input() {
+        String temp; boolean flag;
         Scanner scanner = new Scanner(System.in);
-        String temp = "";
         System.out.println("** Ввод данных о пассажире: " + this.getName() + " **");
         do {
             System.out.print("Введите способ оплаты (0 - Наличные, 1 - Банковская карта): ");
-            while (scanner.hasNextLine())
-                temp = scanner.nextLine();
-        } while (temp != "0" && temp != "1");
-        this.payment_method = Boolean.parseBoolean(temp);
+            temp = scanner.nextLine();
+            flag = Checking.booleanCheck(temp);
+            if (!flag) System.out.print("Попробуйте ещё раз. ");
+        } while (!flag);
+        if (temp.equals("1"))
+            this.payment_method = true;
+        else
+            this.payment_method = false;
+
+        //System.out.println("\"" + temp + "\"" + this.payment_method);
+        
         System.out.println("Данные успешно введены!\n");
-        scanner.close();
+        //scanner.close();
     }
 
     @Override

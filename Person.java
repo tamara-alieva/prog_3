@@ -59,7 +59,7 @@ public class Person {
         } while (!flag);
         this.balance = Integer.parseInt(temp);
         System.out.println("Данные успешно введены!\n");
-        scanner.close();
+        //scanner.close();
     }
 
     public void output() {

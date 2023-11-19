@@ -1,25 +1,19 @@
-import java.util.regex.Pattern;
-
 public class Checking {
     static public boolean nameCheck(String name) {
         boolean f;
-        f = !name.isEmpty();
-        if (f) {
-            String namePattern = "[A-Za-z]+";
-            Pattern pattern = Pattern.compile(namePattern);
-            f = pattern.matcher(name).matches();
-        }
+        f = !name.isEmpty() && name.matches("^[a-zA-Z]+");
         return f;
     }
 
     static public boolean intCheck(String balance) {
         boolean f;
-        f = !balance.isEmpty();
-        if (f) {
-            String intPattern = "[0-9]+";
-            Pattern pattern = Pattern.compile(intPattern);
-            f = pattern.matcher(balance).matches();
-        }
+        f = !balance.isEmpty() && balance.matches("^[0-9]+");
+        return f;
+    }
+
+    static public boolean booleanCheck(String str) {
+        boolean f;
+        f = !str.isEmpty() && str.matches("[01]{1}");
         return f;
     }
 }
