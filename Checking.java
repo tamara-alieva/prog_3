@@ -16,7 +16,7 @@ public class Checking {
         boolean f;
         f = !balance.isEmpty();
         if (f) {
-            String intPattern = "{IsDigit}+";
+            String intPattern = "[0-9]+";
             Pattern pattern = Pattern.compile(intPattern);
             f = pattern.matcher(balance).matches();
         }

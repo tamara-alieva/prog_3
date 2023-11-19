@@ -34,12 +34,13 @@ public class Passenger extends Person {
     @Override
     public void input() {
         Scanner scanner = new Scanner(System.in);
-        String temp;
+        String temp = "";
         System.out.println("** Ввод данных о пассажире: " + this.getName() + " **");
         do {
             System.out.print("Введите способ оплаты (0 - Наличные, 1 - Банковская карта): ");
-            temp = scanner.next();
-        } while (!temp.equals("0") && !temp.equals("1"));
+            while (scanner.hasNextLine())
+                temp = scanner.nextLine();
+        } while (temp != "0" && temp != "1");
         this.payment_method = Boolean.parseBoolean(temp);
         System.out.println("Данные успешно введены!\n");
         scanner.close();
