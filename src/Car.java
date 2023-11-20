@@ -1,4 +1,8 @@
+package src;
 import java.util.Scanner;
+
+import Checking;
+import Fuel;
 
 public class Car {
     private String brand;
