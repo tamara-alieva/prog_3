@@ -1,2 +1,2 @@
-main-class: src.Main
+main-class: Main
 class-path: bin/
